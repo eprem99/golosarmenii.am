@@ -1,0 +1,9 @@
+{
+    "name": "Post comments",
+    "namespace": "Botble\\Comments\\",
+    "provider": "Botble\\Comments\\Providers\\CommentsServiceProvider",
+    "author": "Vecto digital",
+    "url": "https://vecto.digital",
+    "version": "1",
+    "description": "Plugin for posts comments"
+}

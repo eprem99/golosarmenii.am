@@ -1,0 +1,9 @@
+{
+    "name": "Comments Form",
+    "namespace": "Botble\\Comments\\",
+    "provider": "Botble\\Comments\\Providers\\CommentsServiceProvider",
+    "author": "VECTO digital",
+    "url": "https://vecto.digital",
+    "version": "1",
+    "description": "Post Comments"
+}

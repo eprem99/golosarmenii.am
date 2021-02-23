@@ -1,0 +1,15 @@
+{
+  "name": "botble/facebook",
+  "description": "Facebook plugin",
+  "homepage": "https://botble.com",
+  "authors": [
+    {
+      "name": "Botble Technologies",
+      "email": "minhsang2603@gmail.com",
+      "homepage": "https://botble.com"
+    }
+  ],
+  "require": {
+    "facebook/graph-sdk": "^5.7"
+  }
+}
