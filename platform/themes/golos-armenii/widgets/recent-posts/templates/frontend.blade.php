@@ -1,3 +1,4 @@
+
 @if (is_plugin_active('blog'))
     @if ($sidebar == 'footer_sidebar')
         <section class="footer-item">
@@ -6,11 +7,14 @@
             </section><!-- end .footer-item-head -->
             <section class="footer-item-content">
     @else
-        <section class="sidebar-item">
-            <section class="sidebar-item-head tf">
-                <span><i class="fa fa-newspaper-o" aria-hidden="true"></i>{{ $config['name'] }}</span>
-            </section><!-- end .sidebar-item-head -->
-            <section class="sidebar-item-content">
+        <section class="block-post-item news sidebar-item row mb-5">
+            <div class="col-md-12 mb-3">
+                <div class="block-post-wrap-head sidebar-item-head tf mb-3">
+                        <span class="titles">{{ $config['name'] }}</span>
+                        <span class="after-title"></span>
+                </div><!-- end .sidebar-item-head -->
+            </div>
+            <section class="col-md-12">
     @endif
                 @foreach (get_recent_posts($config['number_display']) as $post)
                     <section class="sidebar-new-item">

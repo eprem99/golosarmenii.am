@@ -2,6 +2,7 @@
 
 use Botble\Blog\Models\Post;
 use Illuminate\Http\Request;
+use Botble\Base\Enums\BaseStatusEnum;
 
 register_sidebar([
     'id'          => 'top_sidebar',
@@ -255,6 +256,16 @@ function save_addition_post_fields($type, $request, $object)
         MetaBox::saveMetaBoxData($object, 'is_important', $request->input('is_important'));
     }
 }
+
+/**
+ * @param int $author_id
+ * @param int $limit
+ */
+function getPostsByAuthor($author_id, $limit)
+    {
+        $posts = Post::where('author_id', $author_id)->where('posts.status', BaseStatusEnum::PUBLISHED)->orderBy('created_at', 'desc')->limit($limit)->get();
+        return $posts;
+    }
 
 add_action('init', function () {
     config([
