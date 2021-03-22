@@ -26,37 +26,39 @@
                     </ul>
                 </div>
             </span>
-            @push('footer')
-                <div class="modal fade short_code_modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-md">
-                        <div class="modal-content">
-                            <div class="modal-header bg-primary">
-                                <h4 class="modal-title"><i class="til_img"></i><strong>{{ trans('core/base::forms.add_short_code') }}</strong></h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
+            @once
+                @push('footer')
+                    <div class="modal fade short_code_modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary">
+                                    <h4 class="modal-title"><i class="til_img"></i><strong>{{ trans('core/base::forms.add_short_code') }}</strong></h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
 
-                            <div class="modal-body with-padding">
-                                <form class="form-horizontal short-code-data-form">
-                                    <input type="hidden" class="short_code_input_key">
+                                <div class="modal-body with-padding">
+                                    <form class="form-horizontal short-code-data-form">
+                                        <input type="hidden" class="short_code_input_key">
 
-                                    <div class="half-circle-spinner">
-                                        <div class="circle circle-1"></div>
-                                        <div class="circle circle-2"></div>
-                                    </div>
+                                        <div class="half-circle-spinner">
+                                            <div class="circle circle-1"></div>
+                                            <div class="circle circle-2"></div>
+                                        </div>
 
-                                    <div class="short-code-admin-config">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="float-left btn btn-secondary" data-dismiss="modal">{{ trans('core/base::tables.cancel') }}</button>
-                                <button class="float-right btn btn-primary add_short_code_btn">{{ trans('core/base::forms.add') }}</button>
+                                        <div class="short-code-admin-config">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="float-left btn btn-secondary" data-dismiss="modal">{{ trans('core/base::tables.cancel') }}</button>
+                                    <button class="float-right btn btn-primary add_short_code_btn">{{ trans('core/base::forms.add') }}</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- end Modal -->
-            @endpush
+                    <!-- end Modal -->
+                @endpush
+            @endonce
         @endif
 
         {!! apply_filters(BASE_FILTER_FORM_EDITOR_BUTTONS, null) !!}
@@ -64,4 +66,4 @@
     <div class="clearfix"></div>
 @endif
 
-{!! call_user_func_array([Form::class, setting('rich_editor', config('core.base.general.editor.primary'))], compact('name', 'value', 'attributes')) !!}
+{!! call_user_func_array([Form::class, setting('rich_editor', config('core.base.general.editor.primary'))], [$name, $value, $attributes]) !!}

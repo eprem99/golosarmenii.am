@@ -22,4 +22,18 @@ class CommentsCacheDecorator extends CacheAbstractDecorator implements CommentsI
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
+    /**
+     * {@inheritDoc}
+     */
+    public function getComments($id)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+    /**
+     * {@inheritDoc}
+     */
+    public function posttitle($id)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
 }

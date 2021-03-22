@@ -211,3 +211,19 @@
         transform: rotate(360deg)
     }
 }
+.tab-content.active {
+	display: block;
+}
+.tab-content {
+	display: none;
+}
+.list-tab {
+	display: flex;
+}
+.list-tab li {
+	margin-right: 15px;
+	padding: 15px;
+	background: #eee;
+	cursor: pointer;
+	text-transform: uppercase;
+}

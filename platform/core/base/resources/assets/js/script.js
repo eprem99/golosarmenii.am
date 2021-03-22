@@ -582,7 +582,7 @@ class Botble {
                         case 'attachment':
                             let firstAttachment = _.first(files);
                             $el.closest('.attachment-wrapper').find('.attachment-url').val(firstAttachment.url);
-                            $('.attachment-details').html('<a href="' + firstAttachment.full_url + '" target="_blank">' + firstAttachment.url + '</a>');
+                            $el.closest('.attachment-wrapper').find('.attachment-details').html('<a href="' + firstAttachment.full_url + '" target="_blank">' + firstAttachment.url + '</a>');
                             break;
                     }
                 }
@@ -725,13 +725,13 @@ class Botble {
         });
     }
 
-    static initCodeEditor(id) {
+    static initCodeEditor(id, type = 'css') {
         $(document).find('#' + id).wrap('<div id="wrapper_' + id + '"><div class="container_content_codemirror"></div> </div>');
         $('#wrapper_' + id).append('<div class="handle-tool-drag" id="tool-drag_' + id + '"></div>');
         CodeMirror.fromTextArea(document.getElementById(id), {
             extraKeys: {'Ctrl-Space': 'autocomplete'},
             lineNumbers: true,
-            mode: 'css',
+            mode: type,
             autoRefresh: true,
             lineWrapping: true,
         });

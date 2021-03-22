@@ -8,6 +8,7 @@ use Botble\Comments\Http\Requests\CommentsRequest;
 use Botble\Comments\Repositories\Interfaces\CommentsInterface;
 use EmailHandler;
 use Exception;
+use Botble\Comments\Tables\CommentsTable;
 use Illuminate\Routing\Controller;
 
 class PublicController extends Controller
@@ -42,6 +43,7 @@ class PublicController extends Controller
 
             EmailHandler::setModule(COMMENTS_MODULE_SCREEN_NAME)
                 ->setVariableValues([
+                    'post_id'    => $comments->post_id ?? 'N/A',
                     'comments_name'    => $comments->name ?? 'N/A',
                     'comments_subject' => $comments->subject ?? 'N/A',
                     'comments_email'   => $comments->email ?? 'N/A',
@@ -57,4 +59,12 @@ class PublicController extends Controller
                 ->setMessage(trans('plugins/comments::comments.email.failed'));
         }
     }
+
+
+    // public function index(CommentsTable $dataTable)
+    // {
+    //     page_title()->setTitle(trans('plugins/comments::comments.menu'));
+
+    //     return $dataTable->renderTable();
+    // }    
 }

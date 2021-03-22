@@ -9,7 +9,7 @@ const dist = 'public/themes/' + directory;
 
 mix
     .sass(
-        source + '/assets/sass/lara-mag.scss',
+        source + '/assets/sass/golos-armenii.scss',
         dist + '/css',
         {},
         [
@@ -45,7 +45,7 @@ mix
             source + '/assets/js/jquery.min.js',
             source + '/assets/js/jquery.fancybox.min.js',
             source + '/assets/js/custom.js'
-        ], dist + '/js/lara-mag.js')
+        ], dist + '/js/golos-armenii.js')
 
     .copyDirectory(dist + '/css', source + '/public/css')
     .copyDirectory(dist + '/js', source + '/public/js');

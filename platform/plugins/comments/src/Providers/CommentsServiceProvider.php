@@ -55,7 +55,7 @@ class CommentsServiceProvider extends ServiceProvider
                 'permissions' => ['comment.index'],
             ]);
 
-            EmailHandler::addTemplateSettings(CONTACT_MODULE_SCREEN_NAME, config('plugins.comments.email', []));
+          //  EmailHandler::addTemplateSettings(COMMENTS_MODULE_SCREEN_NAME, config('plugins.comments.email', []));
         });
 
         $this->app->booted(function () {

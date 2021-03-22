@@ -623,7 +623,10 @@ class RvMedia
                 setting('watermark_position_x', config('core.media.media.watermark.x')),
                 setting('watermark_position_y', config('core.media.media.watermark.y'))
             );
-            $image->save($this->getRealPath($file->url));
+
+            $destinationPath = sprintf('%s/%s', trim(File::dirname($file->url), '/'), File::name($file->url) . '.' . File::extension($file->url));
+
+            $this->uploadManager->saveFile($destinationPath, $image->stream()->__toString());
         }
 
         return true;

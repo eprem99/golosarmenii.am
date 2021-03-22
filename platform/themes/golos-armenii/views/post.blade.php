@@ -4,7 +4,7 @@
             <section class="block-breakcrumb">
                 <span xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb"><a href="{{ route('public.single') }}" rel="v:url" property="v:title">{{ __('Home') }}</a> / <span class="breadcrumb_last">{{ $post->name }}</span></span></span>
             </section><!-- end .block-breakcrumb -->
-            <h1 class="single-title">
+            <h1 class="single-title {{ $post->id }}">
                 {{ $post->name }}
             </h1><!-- end .single-pro-title -->
             <section class="new-item-date">
@@ -54,7 +54,46 @@
                     <section class="cboth"></section>
                 </section><!-- end .block-archive-head -->
                 <section class="single-comment-content">
-                    {!! apply_filters(BASE_FILTER_PUBLIC_COMMENT_AREA, null) !!}
+                <div class="tabs">
+                            <ul class="list-tab">
+                                <li>{{ __('Comments') }}</li>
+                                <li>{{ __('Add comment') }}</li>
+                            </ul>
+                        <div class="tabs-content">
+                            <div class="tab-content">
+                                <ul class="comments">
+                                    @foreach (getComments($post->id) as $comment)
+                                    <li class="comment">
+                                            <div class="comment-head">
+                                                <div class="comment-author">
+                                                    {{$comment->name}}
+                                                </div>
+                                                <div class="comment-date">
+                                                    {{$comment->created_at}}
+                                                </div>
+                                            </div>
+                                            <div class="comments-content">
+                                            {!! $comment->content !!}
+                                            </div>
+                                        </li>
+                                        <ul class="comment-replay">
+                                        @foreach (getCommentsReplay($comment->id) as $replay)
+                                        <li class="replay">
+                                            {!! $replay->message !!}
+                                        </li>
+                                        @endforeach
+                                        </ul>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="tab-content">
+                            {!! do_shortcode('[comments-form][/comments-form]') !!}
+                            </div>
+                        </div>
+                    </div>
+  
+                    <!-- {!! apply_filters(BASE_FILTER_PUBLIC_COMMENT_AREA, null) !!} -->
+                    
                 </section><!-- end .single-comment-content -->
             </section><!-- end .single-comment -->
             <section class="single-pro-related">

@@ -2,9 +2,7 @@
     <section class="sub-page">
         <section class="container">
             <section class="primary fleft">
-                <section class="block-breakcrumb">
-                    <span xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb"><a href="{{ route('public.single') }}" rel="v:url" property="v:title">{{ __('Home') }}</a> / <span class="breadcrumb_last">{{ $page->name }}</span></span></span>
-                </section><!-- end .block-breakcrumb -->
+                {!! Theme::partial('breadcrumbs') !!}
                 <h1 class="single-title">
                     {{ $page->name }}
                 </h1><!-- end .single-pro-title -->

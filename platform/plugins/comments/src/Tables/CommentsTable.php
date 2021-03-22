@@ -145,10 +145,6 @@ class CommentsTable extends TableAbstract
             ],
         ];
     }
-    public function getPost(): array
-    {
-        return $this->postRepository->pluck('posts.name', 'categories.id');
-    }
     /**
      * {@inheritDoc}
      */
@@ -202,11 +198,11 @@ class CommentsTable extends TableAbstract
     /**
      * {@inheritDoc}
      */
-    public function getDefaultButtons(): array
-    {
-        return [
-            'export',
-            'reload',
-        ];
-    }
+    // public function getDefaultButtons(): array
+    // {
+    //     return [
+    //         'export',
+    //         'reload',
+    //     ];
+    // }
 }

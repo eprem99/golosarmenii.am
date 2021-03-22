@@ -8,6 +8,7 @@ const dist = 'public/vendor/core/packages/' + directory;
 
 mix
     .js(source + '/resources/assets/js/custom-css.js', dist + '/js')
+    .js(source + '/resources/assets/js/custom-js.js', dist + '/js')
     .js(source + '/resources/assets/js/theme-options.js', dist + '/js')
     .js(source + '/resources/assets/js/theme.js', dist + '/js')
 

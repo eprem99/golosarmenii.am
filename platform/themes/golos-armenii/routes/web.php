@@ -22,9 +22,9 @@ Route::group(['namespace' => 'Theme\GolosArmenii\Http\Controllers', 'middleware'
         //     'uses' => 'GolosArmeniiController@getSiteMap',
         // ]);
 
-        // Route::get('{slug?}' . config('core.base.general.public_single_ending_url'), [
-        //     'as'   => 'public.single',
-        //     'uses' => 'GolosArmeniiController@getView',
-        // ]);
+        Route::get('{slug?}' . config('core.base.general.public_single_ending_url'), [
+            'as'   => 'public.single',
+            'uses' => 'GolosArmeniiController@getView',
+        ]);
     });
 });

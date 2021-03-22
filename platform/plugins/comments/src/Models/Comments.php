@@ -33,6 +33,7 @@ class Comments extends BaseModel
      * @var array
      */
     protected $fillable = [
+        'post_id',
         'name',
         'email',
         'content',
@@ -52,5 +53,20 @@ class Comments extends BaseModel
     public function replies()
     {
         return $this->hasMany(CommentsReply::class);
+    }
+    public function getComments($post_id)
+    {
+        $data = $this->model->select('comment.*');
+        $data = $data->where('comment.post_id', $post_id);
+
+        return $this->applyBeforeExecuteQuery($data);
+    }
+
+    public function postTitle($post_id)
+    {
+
+        $data  = $this->belongsTo('posts', 'id', $post_id);
+
+        return $this->applyBeforeExecuteQuery($data);
     }
 }

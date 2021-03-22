@@ -38,6 +38,7 @@ class Tag extends BaseModel
         'description',
         'status',
         'author_id',
+        'author_type',
     ];
 
     /**

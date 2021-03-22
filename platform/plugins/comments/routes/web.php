@@ -18,6 +18,12 @@ Route::group(['namespace' => 'Botble\Comments\Http\Controllers', 'middleware' =>
                 'as'   => 'reply',
                 'uses' => 'CommentsController@postReply',
             ]);
+
+            Route::post('postReplyDelete/{id}', [
+                'as'   => 'postReplyDelete',
+                'uses' => 'CommentsController@postReplyDelete',
+                'permission' => 'comment.destroy',
+            ]);
         });
     });
 

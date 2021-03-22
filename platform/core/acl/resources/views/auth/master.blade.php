@@ -1,7 +1,7 @@
 @extends('core/base::layouts.base')
 
 @section('body-class') login @stop
-@section('body-style') background-image: url({{ url(Arr::random(config('core.acl.general.backgrounds', []))) }}); @stop
+@section('body-style') background-image: url({{ get_login_background() }}); @stop
 
 @push('header')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">

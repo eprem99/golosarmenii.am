@@ -2,6 +2,7 @@
 
 namespace Botble\Blog\Services;
 
+use Botble\ACL\Models\User;
 use Botble\Base\Events\CreatedContentEvent;
 use Botble\Blog\Models\Post;
 use Botble\Blog\Services\Abstracts\StoreTagServiceAbstract;
@@ -34,8 +35,9 @@ class StoreTagService extends StoreTagServiceAbstract
 
                 if ($tag === null && !empty($tagName)) {
                     $tag = $this->tagRepository->createOrUpdate([
-                        'name'      => $tagName,
-                        'author_id' => Auth::check() ? Auth::user()->getKey() : 0,
+                        'name'        => $tagName,
+                        'author_id'   => Auth::check() ? Auth::user()->getKey() : 0,
+                        'author_type' => User::class,
                     ]);
 
                     $request->merge(['slug' => $tagName]);

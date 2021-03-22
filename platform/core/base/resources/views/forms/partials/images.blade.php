@@ -1,4 +1,4 @@
-<div class="gallery-images-wrapper">
+<div class="gallery-images-wrapper list-images">
     @php
         $values = $values == '[null]' ? '[]' : $values;
         $attributes = isset($attributes) ? $attributes : [];
@@ -12,11 +12,12 @@
             <p style="color:#c3cfd8">{{ trans('core/base::base.using_button') }}
                 <strong>{{ trans('core/base::base.select_image') }}</strong> {{ trans('core/base::base.to_add_more_image') }}.</p>
         </div>
+        <input type="hidden" name="{{ $name }}">
         <ul class="list-unstyled list-gallery-media-images @if (!is_array($images) || empty($images)) hidden @endif">
             @if (is_array($images) && !empty($images))
                 @foreach($images as $image)
                     @if (!empty($image))
-                        <li class="gallery-image-item-handler" style="width: 150px; height: 150px; float: none; display: inline-block">
+                        <li class="gallery-image-item-handler">
                             <div class="list-photo-hover-overlay">
                                 <ul class="photo-overlay-actions">
                                     <li>

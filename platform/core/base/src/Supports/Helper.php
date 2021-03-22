@@ -195,7 +195,7 @@ class Helper
      */
     public static function countries(): array
     {
-        return trans('core/base::base.countries', []);
+        return config('core.base.general.countries', []);
     }
 
     /**

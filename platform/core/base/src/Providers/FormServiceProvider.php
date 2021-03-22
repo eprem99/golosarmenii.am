@@ -118,6 +118,15 @@ class FormServiceProvider extends ServiceProvider
             'optgroupsAttributes' => [],
         ]);
 
+        Form::component('autocomplete', 'core/base::forms.partials.autocomplete', [
+            'name',
+            'list'                => [],
+            'selected'            => null,
+            'selectAttributes'    => [],
+            'optionsAttributes'   => [],
+            'optgroupsAttributes' => [],
+        ]);
+
         Form::component('googleFonts', 'core/base::forms.partials.google-fonts', [
             'name',
             'selected'          => null,

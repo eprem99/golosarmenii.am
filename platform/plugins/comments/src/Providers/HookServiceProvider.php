@@ -25,11 +25,11 @@ class HookServiceProvider extends ServiceProvider
            // add_filter(BASE_FILTER_TOP_HEADER_LAYOUT, [$this, 'registerTopHeaderNotification'], 120);
             add_filter(BASE_FILTER_APPEND_MENU_NAME, [$this, 'getUnreadCount'], 120, 2);
 
-            // if (function_exists('add_shortcode')) {
-            //     add_shortcode('comments-form', trans('plugins/comments::comments.shortcode_name'), trans('plugins/comments::comments.shortcode_description'), [$this, 'form']);
-            //     shortcode()
-            //         ->setAdminConfig('comments-form', view('plugins/comments::partials.short-code-admin-config')->render());
-            // }
+            if (function_exists('add_shortcode')) {
+                add_shortcode('comments-form', trans('plugins/comments::comments.shortcode_name'), trans('plugins/comments::comments.shortcode_description'), [$this, 'form']);
+                shortcode()
+                    ->setAdminConfig('comments-form', view('plugins/comments::partials.short-code-admin-config')->render());
+            }
         });
     }
 
@@ -78,11 +78,11 @@ class HookServiceProvider extends ServiceProvider
      */
     protected function setUnreadCommentss(): Collection
     {
+        $view = apply_filters(COMMENTS_FORM_TEMPLATE_VIEW, 'plugins/comments::forms.comments');
         if (!$this->unreadCommentss) {
             $this->unreadCommentss = $this->app->make(CommentsInterface::class)
-                ->getUnread(['id', 'name', 'email', 'created_at']);
+                ->getUnread(['id', 'post_id', 'name', 'email', 'created_at']);
         }
-
         return $this->unreadCommentss;
     }
 
@@ -92,7 +92,7 @@ class HookServiceProvider extends ServiceProvider
      */
     public function form($shortcode)
     {
-        $view = apply_filters(CONTACT_FORM_TEMPLATE_VIEW, 'plugins/comments::forms.comments');
+        $view = apply_filters(COMMENTS_FORM_TEMPLATE_VIEW, 'plugins/comments::forms.comments');
 
         if (defined('THEME_OPTIONS_MODULE_SCREEN_NAME')) {
             $this->app->booted(function () {

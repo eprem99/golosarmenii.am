@@ -188,8 +188,9 @@ class MenuController extends BaseController
 
         $this->saveMenuLocations($menu, $request);
 
-        $deletedNodes = explode(' ', ltrim($request->input('deleted_nodes', '')));
+        $deletedNodes = ltrim($request->input('deleted_nodes', ''));
         if ($deletedNodes) {
+            $deletedNodes = explode(' ', ltrim($request->input('deleted_nodes', '')));
             $this->menuNodeRepository->deleteBy([['id', 'IN', $deletedNodes]]);
         }
         Menu::recursiveSaveMenu(json_decode($request->input('menu_nodes'), true), $menu->id, 0);

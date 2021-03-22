@@ -237,33 +237,35 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
         $this->model = $this->originalModel;
 
         if ($filters['categories'] !== null) {
-            $categories = $filters['categories'];
+            $categories = array_filter((array)$filters['categories']);
+
             $this->model = $this->model->whereHas('categories', function ($query) use ($categories) {
                 $query->whereIn('categories.id', $categories);
             });
         }
 
         if ($filters['categories_exclude'] !== null) {
-            $excludeCategories = $filters['categories_exclude'];
+            $excludeCategories = array_filter((array)$filters['categories_exclude']);
+
             $this->model = $this->model->whereHas('categories', function ($query) use ($excludeCategories) {
                 $query->whereNotIn('categories.id', $excludeCategories);
             });
         }
 
         if ($filters['exclude'] !== null) {
-            $this->model = $this->model->whereNotIn('posts.id', $filters['exclude']);
+            $this->model = $this->model->whereNotIn('posts.id', array_filter((array)$filters['exclude']));
         }
 
         if ($filters['include'] !== null) {
-            $this->model = $this->model->whereNotIn('posts.id', $filters['include']);
+            $this->model = $this->model->whereNotIn('posts.id', array_filter((array)$filters['include']));
         }
 
         if ($filters['author'] !== null) {
-            $this->model = $this->model->whereIn('posts.author_id', $filters['author']);
+            $this->model = $this->model->whereIn('posts.author_id', array_filter((array)$filters['author']));
         }
 
         if ($filters['author_exclude'] !== null) {
-            $this->model = $this->model->whereNotIn('posts.author_id', $filters['author_exclude']);
+            $this->model = $this->model->whereNotIn('posts.author_id', array_filter((array)$filters['author_exclude']));
         }
 
         if ($filters['featured'] !== null) {

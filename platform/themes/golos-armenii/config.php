@@ -47,14 +47,31 @@ return [
             $theme
                 ->asset()
                 ->usePath()
-                ->add('lara-mag-css', 'css/lara-mag.css', [], [], '2.0.2');
+                ->add('bootstrap-css', 'css/bootstrap.min.css', [], [], '5.0.0');
+
+            $theme
+                ->asset()
+                ->usePath()
+                ->add('golos-armenii-css', 'css/golos-armenii.css', [], [], '2.0.2');
 
             $theme
                 ->asset()
                 ->container('footer')
                 ->usePath()
-                ->add('lara-mag-js', 'js/lara-mag.js', [], [], '2.0.2');
+                ->add('golos-armenii-js', 'js/golos-armenii.js', [], [], '2.0.2');
+       
+            $theme
+                ->asset()
+                ->container('footer')
+                ->usePath()
+                ->add('custom-js', 'js/custom.js', [], [], '1');
 
+            $theme
+                ->asset()
+                ->container('footer')
+                ->usePath()
+                ->add('bootstrap-js', 'js/bootstrap.min.js', [], [], '1');
+                
             if (function_exists('shortcode')) {
                 $theme->composer(['page', 'post', 'index', 'category', 'tag', 'gallery'],
                     function (\Botble\Shortcode\View\View $view) {

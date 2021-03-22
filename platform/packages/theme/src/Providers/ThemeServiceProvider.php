@@ -90,6 +90,19 @@ class ThemeServiceProvider extends ServiceProvider
                     'permissions' => ['theme.custom-css'],
                 ]);
 
+            if (config('packages.theme.general.enable_custom_js')) {
+                dashboard_menu()
+                    ->registerItem([
+                        'id'          => 'cms-core-appearance-custom-js',
+                        'priority'    => 6,
+                        'parent_id'   => 'cms-core-appearance',
+                        'name'        => 'packages/theme::theme.custom_js',
+                        'icon'        => null,
+                        'url'         => route('theme.custom-js'),
+                        'permissions' => ['theme.custom-js'],
+                    ]);
+            }
+
             admin_bar()
                 ->registerLink(trans('packages/theme::theme.name'), route('theme.index'), 'appearance')
                 ->registerLink(trans('packages/theme::theme.theme_options'), route('theme.options'), 'appearance');
@@ -102,6 +115,26 @@ class ThemeServiceProvider extends ServiceProvider
                     ->container('after_header')
                     ->usePath()
                     ->add('theme-style-integration-css', 'css/style.integration.css', [], [], filectime($file));
+            }
+
+            if (config('packages.theme.general.enable_custom_js')) {
+                if (setting('custom_header_js')) {
+                    add_filter(THEME_FRONT_HEADER, function ($html) {
+                        return $html . setting('custom_header_js');
+                    }, 15);
+                }
+
+                if (setting('custom_body_js')) {
+                    add_filter(THEME_FRONT_BODY, function ($html) {
+                        return $html . setting('custom_body_js');
+                    }, 15);
+                }
+
+                if (setting('custom_footer_js')) {
+                    add_filter(THEME_FRONT_FOOTER, function ($html) {
+                        return $html . setting('custom_footer_js');
+                    }, 15);
+                }
             }
 
             $this->app->register(HookServiceProvider::class);

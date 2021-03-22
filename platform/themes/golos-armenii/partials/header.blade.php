@@ -19,7 +19,9 @@
 
     <style>
         :root {
-            --color-1st: {{ theme_option('primary_color', '#aa0909') }};
+            --color-1st: {{ theme_option('primary_color', '#095272') }};
+            --color-2st: {{ theme_option('top_color', '#095272') }};
+            --color-3st: {{ theme_option('footer_color', '#095272') }};
             --primary-font: '{{ theme_option('primary_font', 'Roboto Condensed') }}', sans-serif;
         }
     </style>
@@ -30,51 +32,50 @@
 <header class="header">
     <section class="header-menu-top">
         <section class="container">
-            <section class="header-menu-top-left fleft">
-                {!!
-                    Menu::renderMenuLocation('header-menu', [
-                        'options' => ['id' => 'menu-header-top-menu', 'class' => 'menu'],
-                        'theme' => true,
-                    ])
-                !!}
+            <section class="header-top-left fleft">
+            {!! dynamic_sidebar('top_sidebar') !!}
             </section><!-- end .header-menu-top-left -->
-            <section class="header-menu-top-right header-social fright">
+            <section class="header-top-right header-social fright">
                 <div class="language-wrapper">
                     {!! apply_filters('language_switcher') !!}
+                </div>
+                <div class="search-wraper">
+                    <a href="#" class="search-btn"><i class="fa fa-search"></i></a>
                 </div>
             </section><!-- end .header-menu-top-right -->
             <section class="cboth"></section><!-- end .cboth -->
         </section><!-- end .container -->
     </section><!-- end .header-menu-top -->
-    <section class="header-top">
-        <section class="container">
+    <section class="header-top"> 
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
             <h1 class="logo fleft">
                 <a href="{{ route('public.single') }}" title="{{ theme_option('site_title') }}">
                     @if (!theme_option('logo'))
-                        <span>Lara</span>Mag
+                        <span>Golos</span>Armenii
                     @else
                         <img src="{{ RvMedia::getImageUrl(theme_option('logo')) }}" alt="{{ theme_option('site_title') }}" title="{{ theme_option('site_title') }}"/>
                     @endif
                 </a>
             </h1><!-- end .logo -->
+                </div>
+                <div class="col-md-9">
             @if (theme_option('banner-ads'))
-                <section class="header-banner">
+                <section class="header-banners">
                     <a href="{{ theme_option('banner-link') }}" @if (theme_option('banner-new-tab')) target="_blank" @endif><img src="{{ RvMedia::getImageUrl(theme_option('banner-ads')) }}" alt="Banner ads header"/></a>
                 </section><!-- end .header-banner -->
             @endif
-        </section><!-- end .container -->
+                </div>
+            </div>
+        </div>
     </section><!-- end .header-right-top -->
     <section class="header-bottom">
         <section class="container">
             <a class="icon-home fleft icon-home-active icon-home-active" href="{{ route('public.single') }}"></a>
-            <section class="collap-main-nav fleft">
-                <img src="{{ Theme::asset()->url('images/icon/collapse.png') }}" alt="Icon Collap"/>
-            </section>
             <section class="main-nav fleft">
                 <section class="main-nav-inner tf">
-                    <section class="close-nav">
-                        <i class="fa fa-times" aria-hidden="true"></i> {{ __('Close menu') }}
-                    </section><!-- end .close nav -->
+
                     {!!
                         Menu::renderMenuLocation('main-menu', [
                             'options' => ['id' => 'menu-header-main-menu', 'class' => 'menu'],
@@ -83,16 +84,6 @@
                     !!}
                 </section><!-- end .main-nav-inner -->
             </section><!-- end .main-nav -->
-            <a href="#" class="search-btn"><i class="fa fa-search"></i></a>
-            <section class="collap-nav-second bsize">
-                ...
-                {!!
-                    Menu::renderMenuLocation('second-menu', [
-                        'options' => ['id' => 'menu-header-second-menu', 'class' => 'menu'],
-                        'theme' => true,
-                    ])
-                !!}
-            </section><!-- end .collap-nav-second -->
             <section class="cboth"></section><!-- end .cboth -->
         </section><!-- end .container -->
     </section><!-- end .header-bottom -->

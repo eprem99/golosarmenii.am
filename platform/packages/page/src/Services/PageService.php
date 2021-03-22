@@ -2,6 +2,7 @@
 
 namespace Botble\Page\Services;
 
+use BaseHelper;
 use Botble\Base\Enums\BaseStatusEnum;
 use Botble\Page\Models\Page;
 use Botble\Page\Repositories\Interfaces\PageInterface;
@@ -44,16 +45,28 @@ class PageService
             abort(404);
         }
 
-        SeoHelper::setTitle($page->name)
-            ->setDescription($page->description);
-
         $meta = new SeoOpenGraph;
         if ($page->image) {
             $meta->setImage(RvMedia::getImageUrl($page->image));
         }
-        $meta->setDescription($page->description);
+
+        if (!BaseHelper::isHomepage($page->id)) {
+            SeoHelper::setTitle($page->name)
+                ->setDescription($page->description);
+
+            $meta->setTitle($page->name);
+            $meta->setDescription($page->description);
+        } else {
+            $siteTitle = theme_option('seo_title') ? theme_option('seo_title') : theme_option('site_title');
+
+            SeoHelper::setTitle($siteTitle)
+                ->setDescription(theme_option('seo_description'));
+
+            $meta->setTitle($siteTitle);
+            $meta->setDescription(theme_option('seo_description'));
+        }
+
         $meta->setUrl($page->url);
-        $meta->setTitle($page->name);
         $meta->setType('article');
 
         SeoHelper::setSeoOpenGraph($meta);

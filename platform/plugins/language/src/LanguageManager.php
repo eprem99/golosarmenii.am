@@ -763,7 +763,7 @@ class LanguageManager
     {
         // Check if this url is a translated url
         foreach ($this->translatedRoutes as $translatedRoute) {
-            if ($this->translator->trans($translatedRoute, [], $urlLocale) == rawurldecode($path)) {
+            if ($this->translator->get($translatedRoute, [], $urlLocale) == rawurldecode($path)) {
                 return $translatedRoute;
             }
         }
@@ -982,7 +982,7 @@ class LanguageManager
             $this->translatedRoutes[] = $routeName;
         }
 
-        return $this->translator->trans($routeName);
+        return $this->translator->get($routeName);
     }
 
     /**
@@ -1004,7 +1004,7 @@ class LanguageManager
         $path = trim($path, '/');
 
         foreach ($this->translatedRoutes as $route) {
-            if ($this->substituteAttributesInRoute($attributes, $this->translator->trans($route)) === $path) {
+            if ($this->substituteAttributesInRoute($attributes, $this->translator->get($route)) === $path) {
                 return $route;
             }
         }
@@ -1207,9 +1207,9 @@ class LanguageManager
 
         $localeKeys = $this->getSupportedLocales();
 
-        if ($locale && !in_array($locale, $localeKeys) && (!$this->hideDefaultLocaleInURL() || $locale != $this->getDefaultLocale())) {
+        $path = $this->app->getCachedRoutesPath();
 
-            $path = $this->app->getCachedRoutesPath();
+        if ($locale && !in_array($locale, $localeKeys) && (!$this->hideDefaultLocaleInURL() || $locale != $this->getDefaultLocale())) {
 
             $path = substr($path, 0, -4) . '_' . $locale . '.php';
 

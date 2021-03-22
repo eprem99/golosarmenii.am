@@ -3,13 +3,11 @@
         @foreach($sliders as $slider)
             <div class="slider-item">
                 @if ($slider->link) <a href="{{ $slider->link }}" class="slider-item-overlay">@endif<img src="{{ RvMedia::getImageUrl($slider->image) }}" alt="{{ $slider->title }}">@if ($slider->link) </a> @endif
-                @if ($slider->title || $slider->description)
+                @if ($slider->title)
                     <header class="slider-item-header">
                         @if ($slider->title)
+                            <div class="slider-date">{{ $slider->created_at }}</div>
                             <h2 class="slider-item-title">{{ $slider->title }}</h2>
-                        @endif
-                        @if ($slider->description)
-                            <span class="slider-item-description">{{ $slider->description }}</span>
                         @endif
                     </header>
                 @endif

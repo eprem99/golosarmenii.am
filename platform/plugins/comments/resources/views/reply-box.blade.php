@@ -1,13 +1,13 @@
 @if ($comments)
     <div id="reply-wrapper">
         @if (count($comments->replies) > 0)
-            @foreach($comments->replies as $reply)
+        @foreach($comments->replies as $reply)
                 <p>{{ trans('plugins/comments::comments.tables.time') }}: <i>{{ $reply->created_at }}</i></p>
                 <p>{{ trans('plugins/comments::comments.tables.content') }}:</p>
                 <pre class="message-content">{!! clean($reply->message) !!}</pre>
               
                 <div class="table-actions">
-                    <a href="#" class="btn btn-icon btn-sm btn-danger deletereplay" data-toggle="tooltip" data-section="ReplayDelettes" data-id="{{ $reply->id }}" role="button" data-original-title="Delete">
+                    <a href="{{ url('comment/postReplyDelete', $reply->id) }}" class="btn btn-icon btn-sm btn-danger deletereplay" data-toggle="tooltip" data-section="postReplayDelete" data-ids="{{ $reply->id }}" role="button" data-original-title="Delete">
                       <i class="fa fa-trash"></i>
                     </a>
                 </div>

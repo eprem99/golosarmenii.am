@@ -29,13 +29,17 @@ class CommentsController extends BaseController
      * @var CommentsInterface
      */
     protected $commentsRepository;
-
+    /**
+     * @var CommentsInterface
+     */
+    protected $commentsReplyRepository;
     /**
      * @param CommentsInterface $commentsRepository
      */
-    public function __construct(CommentsInterface $commentsRepository)
+    public function __construct(CommentsInterface $commentsRepository, CommentsReplyInterface $commentsReplyRepository)
     {
         $this->commentsRepository = $commentsRepository;
+        $this->commentsReplyRepository = $commentsReplyRepository;
     }
 
     /**
@@ -108,7 +112,6 @@ class CommentsController extends BaseController
                 ->setMessage($exception->getMessage());
         }
     }
-
     /**
      * @param Request $request
      * @param BaseHttpResponse $response
@@ -149,19 +152,21 @@ class CommentsController extends BaseController
             ->setMessage(trans('plugins/comments::comments.message_sent_success'));
     }
 
-    public function postDelettes(
-        $id,
-        CommentsReplyRequest $request,
-        BaseHttpResponse $response,
-        CommentsReplyInterface $commentsReplyRepository
+    public function postReplyDelete(
+        $id, Request $request, BaseHttpResponse $response, CommentsReplyInterface $commentsReplyRepository
     ) {
-        $comments = $this->$commentsReplyRepository->findOrFail($id);
+        try {
+            $comments = $this->commentsReplyRepository->findOrFail($id);
+            $this->commentsReplyRepository->delete($comments);
+            event(new DeletedContentEvent(COMMENTS_MODULE_SCREEN_NAME, $request, $comments));
 
-        $this->commentsRepository->delete($comments);
+            return $response->setMessage(trans('core/base::notices.delete_success_message'));
+        } catch (Exception $exception) {
+            return $response
+                ->setError()
+                ->setMessage($exception->getMessage());
+        }
 
-        return $response
-            ->setMessage(trans('plugins/comments::comments.message_sent_success'));
     }
-
 
 }

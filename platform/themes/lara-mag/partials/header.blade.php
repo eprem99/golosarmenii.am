@@ -68,7 +68,7 @@
         <section class="container">
             <a class="icon-home fleft icon-home-active icon-home-active" href="{{ route('public.single') }}"></a>
             <section class="collap-main-nav fleft">
-                <img src="{{ Theme::asset()->url('images/icon/collapse.png') }}" alt="Icon Collap"/>
+                <img src="{{ Theme::asset()->url('images/icon/collapse.png') }}" alt="collapse"/>
             </section>
             <section class="main-nav fleft">
                 <section class="main-nav-inner tf">
@@ -98,10 +98,12 @@
     </section><!-- end .header-bottom -->
 </header><!-- end .header -->
 
-<div class="super-search hide">
-    <form class="quick-search" action="{{ route('public.search') }}">
-        <input type="text" name="q" placeholder="{{ __('Type to search...') }}" class="form-control search-input" autocomplete="off">
-        <span class="search-btn">&times;</span>
-    </form>
-    <div class="search-result"></div>
-</div>
+@if (is_plugin_active('blog'))
+    <div class="super-search hide">
+        <form class="quick-search" action="{{ route('public.search') }}">
+            <input type="text" name="q" placeholder="{{ __('Type to search...') }}" class="form-control search-input" autocomplete="off">
+            <span class="search-btn">&times;</span>
+        </form>
+        <div class="search-result"></div>
+    </div>
+@endif

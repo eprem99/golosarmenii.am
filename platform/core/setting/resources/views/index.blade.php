@@ -127,6 +127,15 @@
 
                         <div class="form-group">
                             <label class="text-title-field"
+                                   for="admin-login-screen-backgrounds">{{ trans('core/setting::setting.general.admin_login_screen_backgrounds') }}
+                            </label>
+                            <div class="admin-login-screen-backgrounds-setting">
+                                {!! Form::mediaImages('login_screen_backgrounds[]', setting('login_screen_backgrounds')) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="text-title-field"
                                    for="admin_title">{{ trans('core/setting::setting.general.admin_title') }}</label>
                             <input data-counter="120" type="text" class="next-input" name="admin_title" id="admin_title"
                                    value="{{ setting('admin_title', config('app.name')) }}">

@@ -28,7 +28,7 @@ if (!function_exists('language_flag')) {
      */
     function language_flag(string $flag, ?string $name = null): string
     {
-        return Html::image(url(BASE_LANGUAGE_FLAG_PATH . $flag . '.svg'), $name, ['title' => $name, 'width' => 16]);
+        return Html::image(asset(BASE_LANGUAGE_FLAG_PATH . $flag . '.svg'), $name, ['title' => $name, 'width' => 16]);
     }
 }
 

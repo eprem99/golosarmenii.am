@@ -1,9 +1,0 @@
-{
-    "name": "News",
-    "namespace": "Botble\\News\\",
-    "provider": "Botble\\News\\Providers\\NewsServiceProvider",
-    "author": "Vecto Technologies",
-    "url": "https://vecto.digital",
-    "version": "5.8",
-    "description": "Manage posts, categories, tags"
-}

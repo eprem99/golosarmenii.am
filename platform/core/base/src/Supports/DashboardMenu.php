@@ -124,6 +124,8 @@ class DashboardMenu
      */
     public function getAll(): Collection
     {
+        do_action('render_dashboard_menu');
+
         $currentUrl = URL::full();
 
         $prefix = request()->route()->getPrefix();

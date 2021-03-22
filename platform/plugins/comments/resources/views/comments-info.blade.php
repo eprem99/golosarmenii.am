@@ -1,6 +1,7 @@
 @if ($comments)
     <p>{{ trans('plugins/comments::comments.tables.time') }}: <i>{{ $comments->created_at }}</i></p>
-    <p>{{ trans('plugins/comments::comments.tables.post_id') }}: <i>{{ $comments->post_id }}</i></p>
+    <p>{{ trans('plugins/comments::comments.tables.post_id') }}: <i>{{ postTitle($comments->post_id) }}</i></p>
+
     <div class="comments-form-row">
     <div class="comments-column-12">
             <div class="comments-form-row">

@@ -59,7 +59,7 @@ class UpdatedContentListener
                 if ($item) {
                     if ($item->key != $slug) {
                         $slugService = new SlugService(app(SlugInterface::class));
-                        $item->key = $slugService->create($slug, $event->data->slug_id);
+                        $item->key = $slugService->create($slug, (int)$event->data->slug_id);
                         $item->prefix = SlugHelper::getPrefix(get_class($event->data));
                         $this->slugRepository->createOrUpdate($item);
                     }

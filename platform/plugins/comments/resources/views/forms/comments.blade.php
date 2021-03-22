@@ -1,3 +1,5 @@
+
+
 {!! Form::open(['route' => 'public.send.comments', 'method' => 'POST', 'class' => 'comments-form']) !!}
     <div class="comments-form-row">
         <div class="comments-column-6">
@@ -46,7 +48,7 @@
     <div class="comments-form-group"><p>{!! clean(__('The field with (<span style="color:#FF0000;">*</span>) is required.')) !!}</p></div>
 
     <div class="comments-form-group">
-        <input type="hidden" value="{{ $post->id }}" id="posts_id">
+        <input type="hidden" value="" id="posts_id">
         <button type="submit" class="comments-button">{{ __('Send') }}</button>
     </div>
 

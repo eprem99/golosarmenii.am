@@ -59,7 +59,7 @@ class PostController extends Controller
                 'posts.author_id',
                 'posts.author_type',
             ])
-            ->paginate($request->input('per_page', 10));
+            ->paginate((int)$request->input('per_page', 10));
 
         return $response
             ->setData(ListPostResource::collection($data))

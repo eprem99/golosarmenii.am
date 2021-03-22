@@ -2,21 +2,22 @@
 
 namespace Botble\Blog\Http\Controllers;
 
+use Botble\ACL\Models\User;
 use Botble\Base\Events\BeforeEditContentEvent;
+use Botble\Base\Events\CreatedContentEvent;
+use Botble\Base\Events\DeletedContentEvent;
+use Botble\Base\Events\UpdatedContentEvent;
 use Botble\Base\Forms\FormBuilder;
 use Botble\Base\Http\Controllers\BaseController;
 use Botble\Base\Http\Responses\BaseHttpResponse;
 use Botble\Blog\Forms\CategoryForm;
-use Botble\Blog\Tables\CategoryTable;
 use Botble\Blog\Http\Requests\CategoryRequest;
 use Botble\Blog\Repositories\Interfaces\CategoryInterface;
+use Botble\Blog\Tables\CategoryTable;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Botble\Base\Events\CreatedContentEvent;
-use Botble\Base\Events\DeletedContentEvent;
-use Botble\Base\Events\UpdatedContentEvent;
 use Illuminate\View\View;
 use Throwable;
 
@@ -72,7 +73,8 @@ class CategoryController extends BaseController
         }
 
         $category = $this->categoryRepository->createOrUpdate(array_merge($request->input(), [
-            'author_id' => Auth::user()->getKey(),
+            'author_id'   => Auth::user()->getKey(),
+            'author_type' => User::class,
         ]));
 
         event(new CreatedContentEvent(CATEGORY_MODULE_SCREEN_NAME, $request, $category));

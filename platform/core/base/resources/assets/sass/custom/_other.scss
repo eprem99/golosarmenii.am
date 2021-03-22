@@ -501,9 +501,11 @@ h4.modal-title {
     position: relative;
     border: 1px dashed #ccc;
     padding: 10px;
+
     ul {
         &.list-gallery-media-images {
             margin-bottom: 0;
+
             > li {
                 float: left;
                 width: 12.15%;
@@ -559,5 +561,20 @@ h4.modal-title {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.list-images {
+    &.gallery-images-wrapper {
+        ul.list-gallery-media-images {
+            > li {
+                width: 150px;
+                height: 150px;
+                float: none;
+                display: inline-block;
+                position: relative;
+                cursor: pointer;
+            }
+        }
     }
 }

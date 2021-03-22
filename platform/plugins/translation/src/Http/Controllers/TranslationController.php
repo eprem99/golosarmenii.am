@@ -2,7 +2,6 @@
 
 namespace Botble\Translation\Http\Controllers;
 
-use App;
 use Assets;
 use Botble\Base\Http\Controllers\BaseController;
 use Botble\Base\Http\Responses\BaseHttpResponse;
@@ -276,7 +275,7 @@ class TranslationController extends BaseController
             ->addStylesDirectly('vendor/core/plugins/translation/css/theme-translations.css');
 
         $groups = Language::getAvailableLocales();
-        $defaultLanguage = Arr::get($groups, App::getLocale());
+        $defaultLanguage = Arr::get($groups, 'en');
 
         if (!$request->has('ref_lang')) {
             $group = Arr::first($groups);
@@ -337,9 +336,7 @@ class TranslationController extends BaseController
 
         ksort($json);
 
-        $json = json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
-        save_file_data($jsonFile, $json, false);
+        File::put($jsonFile, json_encode_prettify($json));
 
         return $response
             ->setPreviousUrl(route('translations.theme-translations'))

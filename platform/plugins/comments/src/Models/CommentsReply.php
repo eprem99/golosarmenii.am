@@ -32,4 +32,17 @@ class CommentsReply extends BaseModel
         'message',
         'comments_id',
     ];
+
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCommentsReplay($comments_id)
+    {
+        $data = $this->model->select('comments_replies.*');
+        $data = $data->where('comments_replies.comments_id', $comments_id);
+
+        return $this->applyBeforeExecuteQuery($data);
+    }
+
 }

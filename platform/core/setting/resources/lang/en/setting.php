@@ -26,7 +26,6 @@ return [
         ],
         'cache_admin_menu'                      => 'Cache admin menu?',
         'enable_send_error_reporting_via_email' => 'Enable to send error reporting via email?',
-        'optimize_page_speed'                   => 'Optimize page speed (minify HTML output, inline CSS, remove comments ..)',
         'time_zone'                             => 'Timezone',
         'default_admin_theme'                   => 'Default admin theme',
         'enable_change_admin_theme'             => 'Enable change admin theme?',
@@ -52,6 +51,7 @@ return [
         'show_site_name'                        => 'Show site name after page title, separate with "-"?',
         'locale'                                => 'Site language',
         'locale_direction'                      => 'Language direction',
+        'admin_login_screen_backgrounds'        => 'Login screen backgrounds (~1366x768)',
     ],
     'email'                        => [
         'subject'                       => 'Subject',

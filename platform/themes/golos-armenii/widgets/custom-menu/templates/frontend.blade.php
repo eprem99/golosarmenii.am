@@ -1,8 +1,5 @@
-@if ($sidebar == 'footer_sidebar')
+@if ($sidebar == 'footer_sidebar' || $sidebar == 'footer_sidebar_2' || $sidebar == 'footer_sidebar_3')
     <section class="footer-item">
-        <section class="footer-item-head">
-            <span>{{ $config['name'] }}</span>
-        </section><!-- end .footer-item-head -->
         <section class="footer-item-content">
 @else
     <section class="sidebar-item">

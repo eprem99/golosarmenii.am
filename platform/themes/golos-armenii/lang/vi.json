@@ -69,5 +69,9 @@
     "Yes": "Yes",
     "You are not authorized to view the requested resource.": "Bạn không có quyền truy cập tới tài nguyên này",
     "Youtube URL is invalid.": "Youtube URL is invalid.",
-    "Youtube video": "Youtube video"
+    "Youtube video": "Youtube video",
+    "telegram": "Telegram",
+    "Facebook": "facebook",
+    "vk": "vk",
+    "Twitter": "twitter"
 }

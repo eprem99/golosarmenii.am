@@ -9,7 +9,6 @@ return [
     'order'                   => 'Order',
     'status'                  => 'Status',
     'created_at'              => 'Created At',
-    'post_id'                 => 'Post',
     'updated_at'              => 'Updated At',
     'description'             => 'Description',
     'operations'              => 'Operations',

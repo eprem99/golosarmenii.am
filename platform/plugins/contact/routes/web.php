@@ -15,8 +15,9 @@ Route::group(['namespace' => 'Botble\Contact\Http\Controllers', 'middleware' => 
             ]);
 
             Route::post('reply/{id}', [
-                'as'   => 'reply',
-                'uses' => 'ContactController@postReply',
+                'as'         => 'reply',
+                'uses'       => 'ContactController@postReply',
+                'permission' => 'contacts.edit',
             ]);
         });
     });
