@@ -222,11 +222,12 @@ function post_additional_fields()
     $is_important = null;
     $args = func_get_args();
     if (!empty($args[0])) {
+        $postSubtitle = MetaBox::getMetaData($args[0], 'post_subtitle', true);
         $videoLink = MetaBox::getMetaData($args[0], 'video_link', true);
         $is_important = MetaBox::getMetaData($args[0], 'is_important', true);
     }
 
-    return Theme::partial('post-fields', compact('videoLink','is_important' ));
+    return Theme::partial('post-fields', compact('postSubtitle', 'videoLink','is_important' ));
 }
 
 // function user_fields()
@@ -252,6 +253,7 @@ add_action(BASE_ACTION_AFTER_UPDATE_CONTENT, 'save_addition_post_fields', 231, 3
 function save_addition_post_fields($type, $request, $object)
 {
     if (is_plugin_active('blog') && get_class($object) == Post::class) {
+        MetaBox::saveMetaBoxData($object, 'post_subtitle', $request->input('post_subtitle'));
         MetaBox::saveMetaBoxData($object, 'video_link', $request->input('video_link'));
         MetaBox::saveMetaBoxData($object, 'is_important', $request->input('is_important'));
     }

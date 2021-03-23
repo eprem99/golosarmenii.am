@@ -47,6 +47,11 @@ return [
             $theme
                 ->asset()
                 ->usePath()
+                ->add('daterangepicker-css', 'css/daterangepicker.css', [], [], '1.0.0');
+
+            $theme
+                ->asset()
+                ->usePath()
                 ->add('bootstrap-css', 'css/bootstrap.min.css', [], [], '5.0.0');
 
             $theme
@@ -59,7 +64,19 @@ return [
                 ->container('footer')
                 ->usePath()
                 ->add('golos-armenii-js', 'js/golos-armenii.js', [], [], '2.0.2');
-       
+            
+            $theme
+                ->asset()
+                ->container('footer')
+                ->usePath()
+                ->add('moment-js', 'js/moment.js', [], [], '1');
+
+            $theme
+                ->asset()
+                ->container('footer')
+                ->usePath()
+                ->add('daterangepicker-js', 'js/jquery.daterangepicker.min.js', [], [], '1');
+                
             $theme
                 ->asset()
                 ->container('footer')

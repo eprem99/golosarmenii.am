@@ -21,13 +21,9 @@
                    [news-posts categorys="30" count="30" titles="2"][/news-posts]
                   </div>
                 </div>  
-                    <div class="calendar-wrapper mt-5">
-                        <div class="calendar-buttons">
-                          <button id="btnPrev" type="button"></button>
-                          <button id="btnNext" type="button"></button>
-                       </div>
-                      <div id="divCal"></div>
-                    </div>          
+
+                <input id="dom-id" type="hidden" name="calendar"/>
+                <div id="date-range12-container" class="text-center mt-5"></div>        
                 </div>
             </div>
             <div class="row mt-5">
