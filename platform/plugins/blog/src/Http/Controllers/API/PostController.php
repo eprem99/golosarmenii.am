@@ -81,7 +81,39 @@ class PostController extends Controller
     public function getSearch(Request $request, PostInterface $postRepository, BaseHttpResponse $response)
     {
         $query = $request->input('q');
+
         $posts = $postRepository->getSearch($query);
+        $data = [
+            'items' => $posts,
+            'query' => $query,
+            'count' => $posts->count(),
+        ];
+
+        if ($data['count'] > 0) {
+            return $response->setData(apply_filters(BASE_FILTER_SET_DATA_SEARCH, $data));
+        }
+
+        return $response
+            ->setError()
+            ->setMessage(trans('core/base::layouts.no_search_result'));
+    }
+  
+    /**
+     * Calendar post
+     *
+     * @bodyParam s string required The search keyword.
+     *
+     * @group Blog
+     *
+     * @param Request $request
+     * @param PostInterface $postRepository
+     * @param BaseHttpResponse $response
+     * @return BaseHttpResponse
+     */
+    public function getCalendar(Request $request, PostInterface $postRepository, BaseHttpResponse $response)
+    {
+        $query = $request->input('s');
+        $posts = $postRepository->getCalendar($query);
 
         $data = [
             'items' => $posts,

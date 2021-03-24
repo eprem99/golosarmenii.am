@@ -161,9 +161,37 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
      */
     public function getSearch($query, $limit = 10, $paginate = 10)
     {
+
         $data = $this->model->with('slugable')->where('posts.status', BaseStatusEnum::PUBLISHED);
         foreach (explode(' ', $query) as $term) {
+
             $data = $data->where('posts.name', 'LIKE', '%' . $term . '%');
+        }
+
+        $data = $data->select('posts.*')
+            ->orderBy('posts.created_at', 'desc');
+
+        if ($limit) {
+            $data = $data->limit($limit);
+        }
+
+        if ($paginate) {
+            return $this->applyBeforeExecuteQuery($data)->paginate($paginate);
+        }
+
+        return $this->applyBeforeExecuteQuery($data)->get();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCalendar($query, $limit = 10, $paginate = 10)
+    {
+
+        $data = $this->model->with('slugable')->where('posts.status', BaseStatusEnum::PUBLISHED);
+        foreach (explode('|', $query) as $term) {
+ var_dump($term);
+            $data = $data->where('posts.updated_at', 'BETWEEN', '%' . $term . '%');
         }
 
         $data = $data->select('posts.*')

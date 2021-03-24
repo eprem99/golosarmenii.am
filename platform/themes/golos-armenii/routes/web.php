@@ -28,3 +28,12 @@ Route::group(['namespace' => 'Theme\GolosArmenii\Http\Controllers', 'middleware'
         ]);
     });
 });
+
+// Route::group(['namespace' => 'Botble\Blog\Http\Controllers', 'middleware' => ['web', 'core']], function () {
+//     Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
+//         Route::get('calendar', [
+//             'as'   => 'public.calendar',
+//             'uses' => 'PublicController@getCalendar',
+//         ]);
+//     });
+// });

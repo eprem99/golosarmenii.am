@@ -74,6 +74,13 @@ class PostCacheDecorator extends CacheAbstractDecorator implements PostInterface
     /**
      * {@inheritDoc}
      */
+    public function getCalendar($query, $limit = 10, $paginate = 10)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+    /**
+     * {@inheritDoc}
+     */
     public function getByCategory($categoryId, $paginate = 12, $limit = 0)
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());

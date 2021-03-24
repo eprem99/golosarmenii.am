@@ -23,11 +23,21 @@ class PublicController extends Controller
      */
     public function getSearch(Request $request, PostInterface $postRepository)
     {
-        $query = $request->input('q');
+        $q = $request->input('q');
+        $s = $request->input('s');
+          
+        if(!empty($s)){
+            $query = $s;
+            $posts = $postRepository->getCalendar($query);
+        }else{
+            $query = $q;
+            $posts = $postRepository->getSearch($query);
+        }
+
         SeoHelper::setTitle(__('Search result for: ') . '"' . $query . '"')
             ->setDescription(__('Search result for: ') . '"' . $query . '"');
 
-        $posts = $postRepository->getSearch($query, 0, 12);
+       // $posts = $postRepository->getSearch($query, 0, 12);
 
         Theme::breadcrumb()
             ->add(__('Home'), url('/'))
@@ -36,7 +46,26 @@ class PublicController extends Controller
         return Theme::scope('search', compact('posts'))
             ->render();
     }
+    /**
+     * @param Request $request
+     * @param PostInterface $postRepository
+     * @return Response
+     */
+    public function getCalendar(Request $request, PostInterface $postRepository)
+    {
+        $query = $request->input('q');
+        SeoHelper::setTitle(__('Search result for: ') . '"' . $query . '"')
+            ->setDescription(__('Search result for: ') . '"' . $query . '"');
 
+        $posts = $postRepository->getCalendar($query, 0, 12);
+
+        Theme::breadcrumb()
+            ->add(__('Home'), url('/'))
+            ->add(__('Search result for: ') . '"' . $query . '"', route('public.calendar'));
+
+        return Theme::scope('calendar', compact('posts'))
+            ->render();
+    }
     /**
      * @param string $slug
      * @param Request $request
