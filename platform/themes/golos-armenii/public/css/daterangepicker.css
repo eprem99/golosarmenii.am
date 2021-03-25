@@ -203,11 +203,6 @@
   cursor: pointer;
 }
 
-.date-picker-wrapper table .caption .next:hover, .date-picker-wrapper table .caption .prev:hover {
-  background-color: #ccc;
-  color: white;
-}
-
 .date-picker-wrapper .gap {
   position: relative;
   z-index: 1;

@@ -286,3 +286,62 @@ add_action('init', function () {
 RvMedia::addSize('featured', 560, 380)->addSize('medium', 540, 360);
 
 
+    function getWeatherDataXml($cache_life, $city) {
+        $weather = array();
+        $cache_file = $_SERVER['DOCUMENT_ROOT']."/log/weather.txt";
+        $url='http://export.yandex.ru/bar/reginfo.xml?region='.$city.'.xml';
+        if (time() - @filemtime($cache_file) >= $cache_life) {
+                $ch = curl_init($url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $data = curl_exec($ch);
+                curl_close($ch);
+                file_put_contents($cache_file, $data);
+                $buf = file_get_contents($url);
+        if ($buf) file_put_contents($cache_file, $buf);
+        }
+        $xml = simplexml_load_file($cache_file);
+        $weather['temp'] = $xml->weather->day->day_part[0]->temperature;
+        $weather['image-v2'] = $xml->weather->day->day_part[0]->{'image-v2'};
+        return $weather;
+    }
+
+function getCurencies() {
+    ini_set('soap.wsdl_cache_enabled', '0');
+    ini_set('soap.wsdl_cache_ttl', '0');
+
+    define('WSDL', 'http://api.cba.am/exchangerates.asmx?wsdl');
+
+    $error = false;
+
+    try {
+    $client = new SoapClient(WSDL, array(
+            'version' => SOAP_1_1
+        ));
+
+        $result = $client->__soapCall("ExchangeRatesByDate", array(array(
+            'date' => date('Y-m-d\TH:i:s')
+        )));
+
+        if (is_soap_fault($result)) {
+            throw new Exception('Failed to get data');
+        } else {
+            $data = $result->ExchangeRatesByDateResult;
+        }
+    } catch (Exception $e) {
+        $error = 'Message: ' . $e->getMessage() . "\nTrace:" . $e->getTraceAsString();
+    }
+
+    if ($error === false) {
+        
+        $rates = $data->Rates->ExchangeRate;
+        
+        if (is_array($rates) && count($rates) > 0) {
+
+            return $rates;
+
+    } else {
+        echo '<pre>';
+        echo $error;
+    }
+}
+}

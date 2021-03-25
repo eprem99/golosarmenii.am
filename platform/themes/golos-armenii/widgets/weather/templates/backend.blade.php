@@ -3,6 +3,10 @@
     <input type="text" class="form-control" name="name" value="{{ $config['name'] }}">
 </div>
 <div class="form-group">
-    <label for="content">{{ trans('bases::forms.content') }}</label>
-    <textarea name="content" class="form-control" rows="7">{{ $config['content'] }}</textarea>
+    <label for="cachetime">{{ __('Cache time') }}</label>
+    <input type="text" name="cachetime" class="form-control" value="{{ $config['cachetime'] }}">
+</div>
+<div class="form-group">
+    <label for="geoid">{{ __('City geoID') }}</label>
+    <input type="text" name="geoid" class="form-control" value="{{ $config['geoid'] }}">
 </div>

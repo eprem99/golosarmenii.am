@@ -6,7 +6,12 @@
             <section class="block-post-item news sidebar-item row mb-2">
                 <div class="col-md-12">
                     <div class="block-post-wrap-head sidebar-item-head tf mb-3">
-                            <span class="titles">{{  __('Search result for: ":query"', ['query' => Request::input('q')]) }}</span>
+                        @if(Request::input('q') != NULL)
+                           <span class="titles">{{  __('Search result for: ":query"', ['query' => Request::input('q')]) }}</span>
+                        @else
+                           <span class="titles">{{  __('Search result for date: ":query"', ['query' => Request::input('s')]) }}</span>
+                       @endif
+                            
                             <span class="after-title"></span>
                     </div><!-- end .sidebar-item-head -->
                 </div>

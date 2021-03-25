@@ -189,9 +189,18 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
     {
 
         $data = $this->model->with('slugable')->where('posts.status', BaseStatusEnum::PUBLISHED);
-        foreach (explode('|', $query) as $term) {
- var_dump($term);
-            $data = $data->where('posts.updated_at', 'BETWEEN', '%' . $term . '%');
+        $time = explode('|', $query);
+        if(count($time) >= 2) {
+            $data_to = date("Y-m-d H:i:s", strtotime($time[0]));
+            $data_from = date("Y-m-d H:i:s", strtotime($time[1]));
+            if(!empty($data_to) && !empty($data_from)){
+                $data = $data->where('posts.updated_at', '>=',$data_to)->where('posts.updated_at', '<=', $data_from);
+            }
+        }else if(count($time) == 1){
+            $data_to = date("Y-m-d H:i:s", strtotime($time[0]));
+            if(!empty($data_to)){
+                $data = $data->where('posts.updated_at', '==', $data_to);
+            }
         }
 
         $data = $data->select('posts.*')
