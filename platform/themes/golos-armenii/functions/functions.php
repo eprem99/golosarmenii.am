@@ -1,14 +1,7 @@
 <?php
 
 use Botble\Base\Enums\BaseStatusEnum;
-use Botble\Base\Http\Responses\BaseHttpResponse;
-use Botble\Blog\Http\Resources\PostResource;
-use Botble\Blog\Http\Resources\ListPostResource;
-use Botble\Blog\Repositories\Interfaces\PostInterface;
-use Botble\Blog\Supports\FilterPost;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Botble\Blog\Models\Post;
 
 register_sidebar([
@@ -35,6 +28,16 @@ register_sidebar([
 
 register_sidebar([
     'id'          => 'home_sidebar',
+    'name'        => __('Home sidebar'),
+    'description' => __('Area for home widgets'),
+]);
+register_sidebar([
+    'id'          => 'home_sidebar_2',
+    'name'        => __('Home sidebar'),
+    'description' => __('Area for home widgets'),
+]);
+register_sidebar([
+    'id'          => 'home_sidebar_3',
     'name'        => __('Home sidebar'),
     'description' => __('Area for home widgets'),
 ]);
@@ -79,7 +82,7 @@ add_shortcode('last-posts', __('Last posts'), __('Last posts'), function ($short
 
 
 add_shortcode('news-posts', __('News'), __('News posts'), function ($shortCode) {
-    return Theme::partial('short-codes.news-posts', ['categorys' => $shortCode->categorys, 'count' => $shortCode->count, 'titles' => $shortCode->titles]);
+    return Theme::partial('short-codes.news-posts', ['categorys' => $shortCode->categorys, 'count' => $shortCode->count, 'titles' => $shortCode->titles, 'height' => $shortCode->height]);
 });
 
 shortcode()->setAdminConfig('google-map', Theme::partial('short-codes.google-map-admin-config'));

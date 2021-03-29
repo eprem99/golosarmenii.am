@@ -13,7 +13,7 @@
                     e = a(".page-header"),
                     n = e.data("sticky"),
                     o = e.data("sticky-checkpoint"),
-                    s = a(".navigation"),
+                    s = a(".main-nav"),
                     l = a(".page-searchbox"),
                     c = a(".navigation-toggle");
                 e.length > 0 &&
@@ -29,7 +29,7 @@
                     });
             })(),
             (e = a(".navigation-toggle")),
-            (n = a(".navigation")),
+            (n = a(".main-nav")),
             e.length > 0 &&
                 e.on("click", function () {
                     var e = a(this);
@@ -61,7 +61,7 @@
             var e, n, o;
             (n = (e = a(".page-header")).data("responsive")),
                 (o = a(".navigation-toggle")),
-                n > a(window).innerWidth() ? (i(e.find(".navigation"), "navigation--mobile"), o.show()) : (o.hide(), t(e.find(".navigation"), "navigation--mobile"));
+                n > a(window).innerWidth() ? (i(e.find(".main-nav"), "navigation--mobile"), o.show()) : (o.hide(), t(e.find(".main-nav"), "navigation--mobile"));
         }),
         a(window).on("resize", function () {});
 

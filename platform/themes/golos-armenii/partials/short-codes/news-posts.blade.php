@@ -16,7 +16,7 @@
                 </div><!-- end .sidebar-item-head -->
             </div>
             @endif
-            <section class="block-post-content scrollbar row">
+            <section class="block-post-content scrollbar row" @if (!empty($height)) style="height: {{$height}}px" @endif>
                 @foreach($postCategories as $post)
                     <div class="col-md-12 mb-3">
                         <div class="border-bottom-2">

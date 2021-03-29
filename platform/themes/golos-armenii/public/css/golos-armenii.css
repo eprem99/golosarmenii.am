@@ -176,8 +176,8 @@ textarea {
         margin-right: 8px;
         margin-top: 4px;
         filter: brightness(0) invert(1);
-        width: 25px;
-        height: 35px;
+        width: 28px;
+        height: 28px;
     }
     .curencies-block #exchange {
         margin-right: 15px;
@@ -300,9 +300,9 @@ textarea {
     .navigation-toggle {
         position: relative;
         display: inline-block;
-        width: 30px;
-        height: 30px;
-        margin-top: 15px;
+        width: 40px;
+        height: 33px;
+        margin-top: 25px;
         overflow: hidden;
         float: right;
     }
@@ -318,7 +318,7 @@ textarea {
     }
     .navigation-toggle span {
         top: 50%;
-        width: 15px;
+        width: 20px;
         transform: translateY(-50%);
     }
     .navigation-toggle:after,
@@ -327,11 +327,11 @@ textarea {
     }
     .navigation-toggle:before {
         top: 7px;
-        width: 10px;
+        width: 15px;
     }
     .navigation-toggle:after {
         bottom: 7px;
-        width: 20px;
+        width: 25px;
     }
     .navigation-toggle:hover {
         cursor: pointer;
@@ -538,9 +538,9 @@ textarea {
         color: #222;
         font-size: 14px;
     }
-.slider-item .slider-item-header {
-    background-color: var(--color-1st);
-}
+    .slider-item .slider-item-header {
+        background-color: rgba(9, 82, 114,.6) !important;
+    }
 .slider-item .slider-item-header .slider-item-title {
     color: #fff;
     font-size: 18px;
@@ -1277,6 +1277,7 @@ footer .social-block {
     }
     .header-top-left {
         width: 100%;
+        flex-wrap: wrap;
     }
     .header-top {
         height: auto;
@@ -1287,15 +1288,16 @@ footer .social-block {
     }
     .header-social {
         position: absolute;
-        top: 80px;
-        right: 40%;
+        top: 0;
+        right: 0;
         transform: translate(0, 0);
     }
-    .header-social a {
-        color:var(--color-1st);
+    .slider-item .slider-item-header {
+        width: 100% !important;
     }
-    .header-menu-top .language_bar_list li a span {
-        color:var(--color-1st);
+    .col-md-5.reverse {
+        flex-direction: column-reverse;
+        display: flex;
     }
     .logo {
         height: 60px;
@@ -1356,6 +1358,33 @@ footer .social-block {
     .footer-bottom-right li {
         display: inline-block;
         float: none;
+    }
+    .header-menu-top .container {
+        height: auto;
+        position: relative;
+    }
+    .header-top-left .top-item-content:nth-child(1) {
+        width: 50%;
+        flex-grow: 1;
+    }
+    .top-item-content .social-block {
+        height: 0;
+    }
+    .header-top-left .top-item-content:nth-child(2) {
+        width: 100%;
+        /* flex-grow: 2; */
+        order: 3;
+        justify-content: center;
+        /* justify-items: center; */
+        display: flex;
+    }
+    .header-top-left .top-item-content:nth-child(3) {
+        flex-grow: 1;
+        order: 2;
+        opacity: 0;
+    }
+    .navigation-toggle {
+        display: block !important;
     }
 }
 @media screen and (max-width: 590px) {
