@@ -60,6 +60,16 @@ class ProfileForm extends FormAbstract
                 'wrapper'    => [
                     'class' => $this->formHelper->getConfig('defaults.wrapper_class') . ' col-md-6',
                 ],
+            ])->add('about', 'textarea', [
+                'label'      => trans('core/acl::users.about'),
+                'label_attr' => ['class' => 'control-label'],
+                'attr'       => [
+                    'placeholder'  => trans('core/acl::users.about_placeholder'),
+                    'data-counter' => 60,
+                ],
+                'wrapper'    => [
+                    'class' => $this->formHelper->getConfig('defaults.wrapper_class') . ' col-md-12',
+                ],
             ])
             ->setActionButtons(view('core/acl::users.profile.actions')->render());
     }

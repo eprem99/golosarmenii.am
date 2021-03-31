@@ -1,0 +1,9 @@
+{
+    "name": "Subscribe Form",
+    "namespace": "Botble\\Subscribe\\",
+    "provider": "Botble\\Subscribe\\Providers\\SubscribeServiceProvider",
+    "author": "VECTO digital",
+    "url": "https://vecto.digital",
+    "version": "1",
+    "description": "Subscribe post type and form"
+}

@@ -60,7 +60,9 @@
                 </a>
             </h1><!-- end .logo -->
             <div class="navigation-toggle navigation-toggle--dark" style=""><span></span></div>
-
+            <section class="collap-main-nav fleft">
+                <img src="{{ Theme::asset()->url('images/icon/collapse.png') }}" alt="collapse"/>
+            </section>
                 </div>
                 <div class="col-md-9">
             @if (theme_option('banner-ads'))

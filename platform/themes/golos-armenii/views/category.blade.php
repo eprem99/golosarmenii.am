@@ -27,7 +27,7 @@
                                         <section class="featured-home-post-item-date">
                                             <span><i class="fa fa-calendar" aria-hidden="true"></i>{{ $post->created_at->format('Y-m-d') }}</span>
                                             <span><i class="fa fa-user-secret" aria-hidden="true"></i>
-                                                {{ $post->author->getFullName() }}
+                                               <a href="/author/{{$post->author_id}}"> {{ $post->author->getFullName() }}</a>
                                             </span>
                                         </section><!-- end .featured-home-post-item-date -->
                                     </div><!-- end .featured-new-item-title -->
@@ -63,7 +63,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="post-author">
-                                                        <a href="{{ $post->author->getFullName() }}">
+                                                        <a href="/author/{{ $post->author_id }}">
                                                             {{ $post->author->getFullName() }}
                                                         </a>
                                                     </div>
@@ -140,9 +140,9 @@
         </div>
         <div class="row mt-1">
             <div class="col-md-5">
-                <a class="post-author" href="{{ $posta->author->getFullName() }}">
-                   {{ $posta->author->getFullName() }}
-                </a>
+            <a href="/author/{{ $post->author_id }}">
+                {{ $post->author->getFullName() }}
+            </a>
             </div>
             <div class="col-md-7">
             <div class="d-flex">

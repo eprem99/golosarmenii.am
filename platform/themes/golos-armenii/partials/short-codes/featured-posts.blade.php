@@ -12,7 +12,9 @@
                         <section class="featured-home-post-item-date">
                             <span><i class="fa fa-calendar" aria-hidden="true"></i>{{ $post->created_at->format('Y-m-d') }}</span>
                             <span><i class="fa fa-user-secret" aria-hidden="true"></i>
+                            <a href="/author/{{ $post->author_id }}">
                                 {{ $post->author->getFullName() }}
+                            </a>
                             </span>
                         </section><!-- end .featured-home-post-item-date -->
                         <section class="featured-home-post-item-des">

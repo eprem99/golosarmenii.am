@@ -1,0 +1,14 @@
+{
+    "name": "golos-armenii",
+    "namespace": "Theme\\GolosArmenii\\",
+    "description": "Theme for news site.",
+    "author": "VECTO digital",
+    "version": "1",
+    "required_plugins": [
+        "blog",
+        "contact",
+        "gallery",
+        "language",
+        "simple-slider"
+    ]
+}

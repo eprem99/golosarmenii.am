@@ -18,7 +18,7 @@
             <div class="row">
                         <div class="col-md-6">
                             <div class="post-author">
-                                <a href="{{ $post->author->getFullName() }}">
+                                <a href="/author/{{ $post->author_id }}">
                                     {{ $post->author->getFullName() }}
                                 </a>
                             </div>
@@ -181,7 +181,7 @@
         </div>
         <div class="row mt-1">
             <div class="col-md-5">
-                <a class="post-author" href="{{ $posta->author->getFullName() }}">
+                <a class="post-author" href="/author/{{ $posta->author_id }}">
                    {{ $posta->author->getFullName() }}
                 </a>
             </div>

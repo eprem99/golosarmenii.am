@@ -90,7 +90,7 @@ return [
                 ->add('bootstrap-js', 'js/bootstrap.min.js', [], [], '1');
                 
             if (function_exists('shortcode')) {
-                $theme->composer(['page', 'post', 'index', 'category', 'tag', 'gallery','search', 'calendar'],
+                $theme->composer(['page', 'post', 'index', 'category', 'tag', 'gallery','search', 'calendar', 'author'],
                     function (\Botble\Shortcode\View\View $view) {
                         $view->withShortcodes();
                     });
