@@ -147,19 +147,32 @@ textarea {
         list-style: none;
     }
     .social-list li {
-        background: #fff;
-        padding: 9px 0;
         margin-right: 10px;
         line-height: 0;
         border-radius: 5px;
         width: 30px;
         text-align: center;
     }
+.social-list li a {
+    background: #fff;
+    padding: 9px 9px;
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+.social-list li a:hover {
+    background: var(--color-2st);
+    transition: all 0.5s;
+}
+footer .social-list li a {
+    width: 40px;
+    height: 40px;
+}
     .share-block .social-list {
         padding: 0;
         margin-top: 15px;
     }
-    .share-block .social-list li {
+    .share-block .social-list li a{
         background: var(--color-1st);
     }
     .post-author a {
@@ -236,7 +249,8 @@ textarea {
         height: 90px;
     }
     .header-banner img {
-        height: 100%;
+        height: auto;
+        width: 100%
     }
 .header-banners {
     float: right;
@@ -297,6 +311,18 @@ textarea {
         padding: 0 13px;
         color: #fff;
     }
+.main-nav-inner > ul > li a::after {
+    content: "";
+    width: 0px;
+    height: 2px;
+    background: var(--color-2st);
+    display: block;
+    transition: all 0.5s;
+}
+.main-nav-inner > ul > li a:hover::after {
+    width: 100%;
+    content: "";
+}
     .navigation-toggle {
         position: relative;
         display: inline-block;
@@ -661,21 +687,23 @@ textarea {
         flex-wrap: wrap;
         width: 100%;
     }
-    .block-post-wrap-head .title-tabs span.tab, 
-    nav .pagination li {
-        padding: 0 10px;
-        color: var(--color-1st);
-        font-weight: 700;
-        position: relative;
-        border: 1px solid var(--color-1st);
-        margin-right: -3%;
-        z-index: 7;
-        width: auto;
-        flex: 1;
-        -webkit-transform: skewX(-45deg);
-        margin-left: 23px;
-        background: var(--color-1st);
-    }
+.block-post-wrap-head .title-tabs span.tab, 
+nav .pagination li {
+    padding: 0 10px;
+    color: var(--color-1st);
+    font-weight: 700;
+    position: relative;
+    border: 1px solid var(--color-1st);
+    margin-right: -15px;
+    z-index: 7;
+    width: auto;
+    -webkit-transform: skewX(-45deg);
+    margin-left: 23px;
+    background: var(--color-1st);
+    max-height: 42px;
+    display: flex;
+    /* justify-content: center; */
+}
     nav .pagination li {
         margin-right: -5%;
     }
@@ -726,12 +754,12 @@ textarea {
     .block-post-wrap-head .title-tabs span.tab:first-child a {
         margin-left: -30px;
         background: var(--color-1st);
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     .block-post-wrap-head .title-tabs span.tab a {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     .block-post-wrap-head .title-tabs span.tab.active:first-child a {
         background: #fff;

@@ -1,9 +1,0 @@
-{
-    "name": "Author",
-    "namespace": "Botble\\Userviews\\",
-    "provider": "Botble\\Userviews\\Providers\\UserviewsServiceProvider",
-    "author": "VECTO digital",
-    "url": "https://vecto.digital",
-    "version": "1",
-    "description": "Display author info and posts"
-}

@@ -33,7 +33,7 @@
                                        href="{{ $postCategory->url }}">{{ $postCategory->name }}</a>
                                 </h2><!-- end .post1-item-title -->
                                 <div class="post1-item-des">
-                                    {{ $postCategory->description }}
+                                    {{ Str::limit(strip_tags($postCategory->description), 100) }}
                                 </div><!-- end .post1-item-des -->
                             </div><!-- end .post1-item-info -->
                         </div>

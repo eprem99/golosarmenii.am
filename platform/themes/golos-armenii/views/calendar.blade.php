@@ -41,14 +41,14 @@
                                                 <div class="col-md-7 news">
                                                     <div class="d-flex justify-content-end">
                                                         <div class="date">
-                                                            {{ $post->updated_at->format('d F Y') }}
+                                                            {{ $post->created_at->format('d F Y') }}
                                                             <span class="time"> 
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="12.146" height="12.146" viewBox="0 0 12.146 12.146">
                                                                     <g id="Icon_ionic-md-time" data-name="Icon ionic-md-time" transform="translate(-3.375 -3.375)">
                                                                     <path id="Path_39" data-name="Path 39" d="M9.442,3.375a6.073,6.073,0,1,0,6.079,6.073A6.071,6.071,0,0,0,9.442,3.375Zm.006,10.931a4.858,4.858,0,1,1,4.858-4.858A4.858,4.858,0,0,1,9.448,14.306Z" fill="#0f83c5"/>
                                                                     <path id="Path_40" data-name="Path 40" d="M17.448,10.688h-.911v3.644l3.188,1.912.455-.747-2.733-1.62Z" transform="translate(-7.697 -4.276)" fill="var(--color-1st)"/>
                                                                     </g>
-                                                                </svg> {{ $post->updated_at->format('H:i') }}
+                                                                </svg> {{ $post->created_at->format('H:i') }}
                                                             </span>
                                                         </div>
                                                         <div class="views">
@@ -60,7 +60,7 @@
                                                 </div>
                                             </div>
                                             <section class="new-item-des">
-                                                {{ $post->description }}
+                                                {{ Str::limit(strip_tags($post->description), 100) }}
                                             </section><!-- end .new-item-des -->
                                         </section><!-- end .new-item-info -->
                                     </div>

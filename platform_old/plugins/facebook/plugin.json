@@ -1,9 +1,0 @@
-{
-    "name": "Facebook",
-    "namespace": "Botble\\Facebook\\",
-    "provider": "Botble\\Facebook\\Providers\\FacebookServiceProvider",
-    "author": "Botble Technologies",
-    "url": "https://botble.com",
-    "version": "5.8",
-    "description": "Facebook"
-}

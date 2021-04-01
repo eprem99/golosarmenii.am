@@ -35,18 +35,18 @@
                                    href="{{ $postCategory->url }}">{{ $postCategory->name }}</a>
                             </h2><!-- end .post1-item-title -->
                             <div class="post1-item-des">
-                                {{ $postCategory->description }}
+                                {{ Str::limit(strip_tags($postCategory->description), 100) }}
                             </div><!-- end .post1-item-des -->
                             <div class="d-flex pt-2 pb-4">
                                 <div class="date">
-                                    {{ $postCategory->updated_at->format('d F Y') }}
+                                    {{ $postCategory->created_at->format('d F Y') }}
                                     <span class="time"> 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12.146" height="12.146" viewBox="0 0 12.146 12.146">
                                           <g id="Icon_ionic-md-time" data-name="Icon ionic-md-time" transform="translate(-3.375 -3.375)">
                                             <path id="Path_39" data-name="Path 39" d="M9.442,3.375a6.073,6.073,0,1,0,6.079,6.073A6.071,6.071,0,0,0,9.442,3.375Zm.006,10.931a4.858,4.858,0,1,1,4.858-4.858A4.858,4.858,0,0,1,9.448,14.306Z" fill="#0f83c5"/>
                                             <path id="Path_40" data-name="Path 40" d="M17.448,10.688h-.911v3.644l3.188,1.912.455-.747-2.733-1.62Z" transform="translate(-7.697 -4.276)" fill="#0f83c5"/>
                                           </g>
-                                        </svg> {{ $postCategory->updated_at->format('H:i') }}
+                                        </svg> {{ $postCategory->created_at->format('H:i') }}
                                     </span>
                                 </div>
                                 <div class="views">
@@ -84,7 +84,7 @@
                                href="{{ $postCategory->url }}">{{ $postCategory->name }}</a>
                         </h2><!-- end .post1-item-title -->
                         <div class="post1-item-des">
-                            {{ $postCategory->description }}
+                            {{ strip_tags($postCategory->description) }}
                         </div><!-- end .post1-item-des -->
                             <div class="d-flex">
                             <div class="date">

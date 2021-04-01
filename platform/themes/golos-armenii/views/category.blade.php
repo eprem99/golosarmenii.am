@@ -90,7 +90,7 @@
                                                 </div>
                                             </div>
                                             <section class="new-item-des">
-                                                {{ $post->description }}
+                                                {{ strip_tags($post->description) }}
                                             </section><!-- end .new-item-des -->
                                         </section><!-- end .new-item-info -->
                                     </div>
@@ -136,25 +136,25 @@
             <a class="white-space" href="{{ $posta->url }}">{{ $posta->name }}</a>
         </h2><!-- end .post1-item-list -->
         <div class="post-content">
-        {{ Str::limit($posta->description, 90) }}
+            {{ Str::limit(strip_tags($posta->description), 100) }}
         </div>
         <div class="row mt-1">
             <div class="col-md-5">
-            <a href="/author/{{ $post->author_id }}">
-                {{ $post->author->getFullName() }}
+            <a href="/author/{{ $posta->author_id }}">
+                {{ $posta->author->getFullName() }}
             </a>
             </div>
             <div class="col-md-7">
             <div class="d-flex">
             <div class="date">
-                {{ $posta->updated_at->format('d F Y') }}
+                {{ $posta->created_at->format('d F Y') }}
                 <span class="time"> 
                     <svg xmlns="http://www.w3.org/2000/svg" width="12.146" height="12.146" viewBox="0 0 12.146 12.146">
                         <g id="Icon_ionic-md-time" data-name="Icon ionic-md-time" transform="translate(-3.375 -3.375)">
                         <path id="Path_39" data-name="Path 39" d="M9.442,3.375a6.073,6.073,0,1,0,6.079,6.073A6.071,6.071,0,0,0,9.442,3.375Zm.006,10.931a4.858,4.858,0,1,1,4.858-4.858A4.858,4.858,0,0,1,9.448,14.306Z" fill="#0f83c5"/>
                         <path id="Path_40" data-name="Path 40" d="M17.448,10.688h-.911v3.644l3.188,1.912.455-.747-2.733-1.62Z" transform="translate(-7.697 -4.276)" fill="#0f83c5"/>
                         </g>
-                    </svg> {{ $posta->updated_at->format('H:i') }}
+                    </svg> {{ $posta->created_at->format('H:i') }}
                 </span>
             </div>
             <div class="views">

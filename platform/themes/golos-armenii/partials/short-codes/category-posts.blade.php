@@ -29,7 +29,7 @@
                                            href="{{ $postCategory->url }}">{{ $postCategory->name }}</a>
                                     </h2><!-- end .post1-item-title -->
                                     <section class="post1-item-des">
-                                        {{ $postCategory->description }}
+                                        {{ Str::limit(strip_tags($postCategory->description), 100) }}
                                     </section><!-- end .post1-item-des -->
                                 </section><!-- end .post1-item-info -->
                             </section><!-- end .post1-item -->
@@ -41,7 +41,7 @@
                             <h2 class="post1-item-list">
                                 <a class="white-space"
                                    href="{{ $postCategory->url }}"><i
-                                        class="fa fa-caret-right" aria-hidden="true"></i>{{ $postCategory->name }}</a>
+                                        class="fa fa-caret-right" aria-hidden="true"></i>{{ Str::limit(strip_tags($postCategory->description), 100) }}</a>
                             </h2><!-- end .post1-item-list -->
                         @endif
                     @endforeach
